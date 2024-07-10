@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import data from "./models/books.json";
+import Book from "./components/book/Book";
 
 function App() {
+  const [books, setBooks] = useState(data);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {/* Without destructuring */}
+      {/* {books.map((book) => (
+        <Book
+          key={book.id}
+          title={book.volumeInfo.title}
+          authors={book.volumeInfo.authors}
+          description={book.volumeInfo.description}
+          price={book.price}
+        />
+      ))} */}
+
+      {/* With destructing */}
+      {books.map((book) => (
+        <Book key={book.id} bookProps={book} />
+      ))}
     </div>
   );
 }
