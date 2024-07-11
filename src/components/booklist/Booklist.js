@@ -1,0 +1,30 @@
+import Book from "../book/Book";
+
+function Booklist() {
+  console.log("length: " + books.length);
+
+  // this shows when the books.json array is empty (i.e [])
+  if (books.length === 0) {
+    return <p>No books yet ...</p>;
+  }
+
+  return (
+    <div>
+      {/* Without destructuring */}
+      {/* {books.map((book) => (
+        <Book
+          key={book.id}
+          title={book.volumeInfo.title}
+          authors={book.volumeInfo.authors}
+          description={book.volumeInfo.description}
+          price={book.price}
+        />
+      ))} */}
+
+      {/* With destructing */}
+      {books.map((book) => (
+        <Book key={book.id} bookProps={book} />
+      ))}
+    </div>
+  );
+}

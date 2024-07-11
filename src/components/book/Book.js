@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 import "./Book.css";
 
 function Book(props) {
@@ -16,11 +18,35 @@ function Book(props) {
     // </div>
     <div>
       <h2>Title: {title}</h2>
-      <p>by {authors}</p>
-      <p>{description}</p>
+      <p>by {authors ? authors.join(",") : "No Authors Listed"}</p>
+      <p>{description && "Description exists"}</p>
       <span>price: {price ? `£${price}` : "No price listed"}</span>
     </div>
   );
 }
+
+// checks the value type of props in order to make sure the right data
+// is being sent to the props
+
+Book.propTypes = {
+  bookProps: PropTypes.shape({
+    volumeInfo: PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      authors: PropTypes.array.isRequired,
+      description: PropTypes.string,
+    }),
+    price: PropTypes.number.isRequired,
+  }).isRequired,
+};
+
+// default props: shows the text "No description provided" when the description
+// value is not provided.
+Book.defaultProps = {
+  bookProps: {
+    volumeInfo: {
+      description: "No description provided",
+    },
+  },
+};
 
 export default Book;

@@ -12,7 +12,7 @@
     "id": "dfghf_2342",
     "volumeInfo": {
       "title": "Pride and Prejudice",
-      "authors": ["Jane Austen"],
+      "authors": null,
       "description": "This is a description ..."
     },
     "price": null
@@ -21,8 +21,8 @@
     "id": "dfghf_4342",
     "volumeInfo": {
       "title": "Pride and Prejudice 2",
-      "authors": ["Jane Austen"],
-      "description": "This is a description ..."
+      "authors": ["Jane Austen", "Alice Houghton"],
+      "description": null
     },
     "price": 10.0
   }
