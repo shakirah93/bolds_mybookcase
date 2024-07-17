@@ -8,6 +8,11 @@ function Book(props) {
     volumeInfo: { title, authors, description },
     price,
   } = props.bookProps;
+
+  const addBook = (titleParameter) => {
+    console.log(`The title of this book is : ${titleParameter}`);
+  };
+
   return (
     // without object destructuring
     // <div>
@@ -21,6 +26,7 @@ function Book(props) {
       <p>by {authors ? authors.join(",") : "No Authors Listed"}</p>
       <p>{description && "Description exists"}</p>
       <span>price: {price ? `£${price}` : "No price listed"}</span>
+      <button onClick={() => addBook(title)}>Add +</button>
     </div>
   );
 }

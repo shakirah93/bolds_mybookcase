@@ -1,10 +1,10 @@
 import Book from "../book/Book";
 
-function Booklist() {
-  console.log("length: " + books.length);
+function Booklist(props) {
+  console.log("length: " + props.booksList.length);
 
   // this shows when the books.json array is empty (i.e [])
-  if (books.length === 0) {
+  if (props.booksList.length === 0) {
     return <p>No books yet ...</p>;
   }
 
@@ -22,9 +22,11 @@ function Booklist() {
       ))} */}
 
       {/* With destructing */}
-      {books.map((book) => (
+      {props.booksList.map((book) => (
         <Book key={book.id} bookProps={book} />
       ))}
     </div>
   );
 }
+
+export default Booklist;
