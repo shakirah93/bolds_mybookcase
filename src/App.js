@@ -1,15 +1,17 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import data from "./models/books.json";
-import Login from "./components/Login";
-import ForgotPassword from "./components/ForgotPassword";
-import WelcomeMessage from "./components/WelcomeMessage";
 import Booklist from "./components/booklist/Booklist";
+import Header from "./components/header/Header";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import About from "./pages/About";
 
 function App() {
   const [books, setBooks] = useState(data);
 
   return (
-    <div>
+    <Router>
+      {/* <React.Fragment> */}
+      <Header />
       {/* implementing list of books using the 'books' state directly */}
 
       {/* {books.map((book) => (
@@ -17,13 +19,15 @@ function App() {
       ))} */}
 
       {/* passing the 'books' state to the booksList prop in the Booklist component (child component) */}
-      <Booklist booksList={books} />
 
-      <ForgotPassword />
+      {/* </React.Fragment> */}
 
-      {/* nesting with specialization */}
-      <WelcomeMessage />
-    </div>
+      <Routes>
+        <Route exact path="/" element={<Booklist booksList={books} />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/bookcase" element="My Bookcase Library" />
+      </Routes>
+    </Router>
   );
 }
 
