@@ -4,6 +4,9 @@ import Booklist from "./components/booklist/Booklist";
 import Header from "./components/header/Header";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import About from "./pages/About";
+import Home from "./pages/Home";
+import Bookcase from "./pages/Bookcase";
+import Contact from "./pages/Contact";
 
 function App() {
   const [books, setBooks] = useState(data);
@@ -23,9 +26,10 @@ function App() {
       {/* </React.Fragment> */}
 
       <Routes>
-        <Route exact path="/" element={<Booklist booksList={books} />} />
+        <Route exact path="/" element={<Home bProps={books} />} />
         <Route path="/about" element={<About />} />
-        <Route path="/bookcase" element="My Bookcase Library" />
+        <Route path="/bookcase" element={<Bookcase />} />
+        <Route path="/contact" element={<Contact />} />
       </Routes>
     </Router>
   );
