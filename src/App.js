@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import data from "./models/books.json";
-import Booklist from "./components/booklist/Booklist";
 import Header from "./components/header/Header";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import About from "./pages/About";
@@ -17,7 +16,9 @@ function App() {
       `https://www.googleapis.com/books/v1/volumes?q=${value}&filter=paid-ebooks&print-type=books&projection=lite`
     ).then((res) => res.json());
 
-    console.log("results: ", results);
+    if(!results.error) {
+      setBooks(results.items);
+    }
   };
 
   return (
